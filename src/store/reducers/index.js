@@ -1,7 +1,8 @@
-import { FECTHING_BREWERY_START, FECTHING_BREWERY_SUCCESS, FECTHING_BREWERY_FAILURE } from '../actions'
+import { FECTHING_BREWERY_START, FECTHING_BREWERY_SUCCESS, FECTHING_BREWERY_FAILURE, PAGE_CHANGE } from '../actions'
 
 const initialState = {
   brewery: [],
+  url: 'https://api.openbrewerydb.org/breweries',
   isFetching: false,
   error: ''
 }
@@ -25,6 +26,11 @@ export const reducer = (state=initialState, action) => {
         ...state,
         isFetching: false,
         error: action.payload
+      }
+    case PAGE_CHANGE:
+      return {
+        ...state,
+        url: `https://api.openbrewerydb.org/breweries?page=${action.payload}`
       }
     default:
       return state;

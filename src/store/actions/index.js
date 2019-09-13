@@ -1,13 +1,14 @@
 import axios from 'axios';
 
-export const FECTHING_BREWERY_START = 'FECTHING_BREWERY_START'
-export const FECTHING_BREWERY_SUCCESS = 'FECTHING_BREWERY_SUCCESS'
-export const FECTHING_BREWERY_FAILURE = 'FECTHING_BREWERY_FAILURE'
+export const FECTHING_BREWERY_START = 'FECTHING_BREWERY_START';
+export const FECTHING_BREWERY_SUCCESS = 'FECTHING_BREWERY_SUCCESS';
+export const FECTHING_BREWERY_FAILURE = 'FECTHING_BREWERY_FAILURE';
+export const PAGE_CHANGE = 'PAGE_CHANGE';
 
-export const getBrewery = () => dispatch => {
+export const getBrewery = (url) => dispatch => {
   dispatch({ type: FECTHING_BREWERY_START });
   axios
-    .get('https://api.openbrewerydb.org/breweries?page=2&per_page=10')
+    .get(url)
     .then(res => {
       console.log(res);
       dispatch({ type: FECTHING_BREWERY_SUCCESS, payload: res.data })
@@ -15,4 +16,11 @@ export const getBrewery = () => dispatch => {
     .catch(err => {
       dispatch({ type: FECTHING_BREWERY_FAILURE, payload: err.message })
     })
+}
+
+export const pageChange = (number) => {
+  return {
+    type: PAGE_CHANGE,
+    payload: number
+  }
 }

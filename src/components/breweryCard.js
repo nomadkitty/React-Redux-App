@@ -9,7 +9,7 @@ const BreweryCard = (props) => {
     <Card>
       <Card.Content>
         <Card.Header>{name}</Card.Header>
-        <Card.Meta>Location: {city}, {state} <br/> {country}</Card.Meta>
+        <Card.Description>Location: {city}, {state} <br/> {country}</Card.Description>
         <Card.Description>Brewery type: {brewery_type}</Card.Description>
       </Card.Content>
       <Card.Content extra>
