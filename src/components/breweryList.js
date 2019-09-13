@@ -19,7 +19,7 @@ const BreweryList =(props) => {
   }
 
   if (isFetching) {
-    return <h2>Breweries are coming!</h2>
+    return <h1>Breweries are coming!</h1>
   }
 
   return (

@@ -2,7 +2,7 @@ import { FECTHING_BREWERY_START, FECTHING_BREWERY_SUCCESS, FECTHING_BREWERY_FAIL
 
 const initialState = {
   brewery: [],
-  url: 'https://api.openbrewerydb.org/breweries',
+  url: 'https://api.openbrewerydb.org/breweries?page=1&per_page=12',
   isFetching: false,
   error: ''
 }
@@ -30,7 +30,7 @@ export const reducer = (state=initialState, action) => {
     case PAGE_CHANGE:
       return {
         ...state,
-        url: `https://api.openbrewerydb.org/breweries?page=${action.payload}`
+        url: `https://api.openbrewerydb.org/breweries?page=${action.payload}&per_page=12`
       }
     default:
       return state;
